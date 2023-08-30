@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { BsFillPencilFill } from 'react-icons/bs';
 import { login, logout, onUserStateChange } from '../api/firebase';
 import User from './User';
+import Button from './ui/Button';
 
 export default function Navbar() {
   const [user, setUser] = useState();
 
   useEffect(() => {
     onUserStateChange((user) => {
-      console.log(user);
       setUser(user);
     });
   }, []);
@@ -23,29 +23,19 @@ export default function Navbar() {
         <Link to="/products" className="font-normal hover:text-brand-active">
           Products
         </Link>
-        <Link to="/carts" className="font-normal hover:text-brand-active">
-          Carts
-        </Link>
-        <Link to="/products/new" className="text-lg hover:text-brand-active">
-          <BsFillPencilFill />
-        </Link>
-        {user && <User user={user} />}
-        {!user && (
-          <button
-            onClick={login}
-            className="bg-brand py-2 px-6 rounded-full hover:bg-brand-yellow"
-          >
-            Login
-          </button>
-        )}
         {user && (
-          <button
-            onClick={logout}
-            className="bg-brand py-2 px-6 rounded-full hover:bg-brand-yellow"
-          >
-            Logout
-          </button>
+          <Link to="/carts" className="font-normal hover:text-brand-active">
+            Carts
+          </Link>
         )}
+        {user && user.isAdmin && (
+          <Link to="/products/new" className="text-lg hover:text-brand-active">
+            <BsFillPencilFill />
+          </Link>
+        )}
+        {user && <User user={user} />}
+        {!user && <Button onClick={login}>Login</Button>}
+        {user && <Button onClick={logout}>Logout</Button>}
       </nav>
     </header>
   );

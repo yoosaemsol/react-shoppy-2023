@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsFillPencilFill } from 'react-icons/bs';
 import { login, logout, onUserStateChange } from '../api/firebase';
+import User from './User';
 
 export default function Navbar() {
   const [user, setUser] = useState();
@@ -15,7 +16,7 @@ export default function Navbar() {
       <Link to="/" className="text-3xl font-bold hover:text-brand-active">
         <h1>Shoppy</h1>
       </Link>
-      <nav className="flex items-center gap-8 font-semibold">
+      <nav className="flex items-center gap-4 sm:gap-8 font-semibold">
         <Link to="/products" className="font-normal hover:text-brand-active">
           Products
         </Link>
@@ -25,6 +26,7 @@ export default function Navbar() {
         <Link to="/products/new" className="text-lg hover:text-brand-active">
           <BsFillPencilFill />
         </Link>
+        {user && <User user={user} />}
         {!user && (
           <button
             onClick={login}

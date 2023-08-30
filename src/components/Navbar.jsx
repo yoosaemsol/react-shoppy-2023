@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiShoppingBag } from 'react-icons/fi';
 import { BsFillPencilFill } from 'react-icons/bs';
+import { login, logout, onUserStateChange } from '../api/firebase';
 
 export default function Navbar() {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    onUserStateChange((user) => {
+      setUser(user);
+    });
+  }, []);
+
+  const handleLogin = () => {
+    login().then(setUser);
+  };
+
+  const handleLogout = () => {
+    logout().then(setUser);
+  };
+
   return (
     <header className="flex justify-between p-2 py-8">
       <Link to="/" className="text-3xl font-bold hover:text-brand-active">
@@ -19,9 +35,22 @@ export default function Navbar() {
         <Link to="/products/new" className="text-lg hover:text-brand-active">
           <BsFillPencilFill />
         </Link>
-        <button className="bg-brand py-2 px-6 rounded-full hover:bg-brand-yellow">
-          Login
-        </button>
+        {!user && (
+          <button
+            onClick={handleLogin}
+            className="bg-brand py-2 px-6 rounded-full hover:bg-brand-yellow"
+          >
+            Login
+          </button>
+        )}
+        {user && (
+          <button
+            onClick={handleLogout}
+            className="bg-brand py-2 px-6 rounded-full hover:bg-brand-yellow"
+          >
+            Logout
+          </button>
+        )}
       </nav>
     </header>
   );

@@ -7,18 +7,8 @@ export default function Navbar() {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    onUserStateChange((user) => {
-      setUser(user);
-    });
+    onUserStateChange(setUser);
   }, []);
-
-  const handleLogin = () => {
-    login().then(setUser);
-  };
-
-  const handleLogout = () => {
-    logout().then(setUser);
-  };
 
   return (
     <header className="flex justify-between p-2 py-8">
@@ -37,7 +27,7 @@ export default function Navbar() {
         </Link>
         {!user && (
           <button
-            onClick={handleLogin}
+            onClick={login}
             className="bg-brand py-2 px-6 rounded-full hover:bg-brand-yellow"
           >
             Login
@@ -45,7 +35,7 @@ export default function Navbar() {
         )}
         {user && (
           <button
-            onClick={handleLogout}
+            onClick={logout}
             className="bg-brand py-2 px-6 rounded-full hover:bg-brand-yellow"
           >
             Logout

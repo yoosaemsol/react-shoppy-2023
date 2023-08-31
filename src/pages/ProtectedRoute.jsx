@@ -9,7 +9,11 @@ export default function ProtectedRoute({ children, requireAdmin }) {
   // * If conditions are not met, redirect to the parent path.
   // * Display the provided children only when the conditions are met."
 
-  const { user } = useAuthContext();
+  const { loading, user } = useAuthContext();
+
+  if (loading) {
+    return null;
+  }
 
   if (!user || (requireAdmin && !user.isAdmin)) {
     return <Navigate to="/" replace />;

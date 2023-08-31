@@ -36,7 +36,7 @@ export async function onUserStateChange(callback) {
   });
 }
 
-async function adminUser(user) {
+export async function adminUser(user) {
   // 1. Check if the user has admin privileges.
   // 2. {...user, isAdmin: true/false}
   return get(ref(database, 'admins')) //
@@ -44,7 +44,7 @@ async function adminUser(user) {
       if (snapshot.exists()) {
         const admins = snapshot.val();
         const isAdmin = admins.includes(user.uid);
-        return { ...user, isAdmin };
+        return { ...user, isAdmin, loading: false };
       }
       return user;
     });

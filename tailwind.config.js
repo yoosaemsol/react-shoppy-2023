@@ -10,6 +10,9 @@ module.exports = {
         'brand-green': '#90C47E',
         'brand-brown': '#B57869',
       },
+      width: {
+        100: '27rem',
+      },
     },
   },
   plugins: [],

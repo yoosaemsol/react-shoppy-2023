@@ -1,17 +1,29 @@
 import React, { useState } from 'react';
+import { addNewProduct } from '../api/firebase';
 import { uploadImage } from '../api/uploader';
 import Button from '../components/ui/Button';
 
 export default function NewProduct() {
   const [product, setProduct] = useState({});
   const [file, setFile] = useState();
+  const [isUploading, setIsUploading] = useState(false);
+  const [success, setSuccess] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsUploading(true);
 
-    uploadImage(file).then((url) => {
-      console.log('url ✨', url);
-    });
+    uploadImage(file) //
+      .then((url) => {
+        addNewProduct(product, url) //
+          .then(() => {
+            setSuccess('Product has been successfully added.');
+            setTimeout(() => {
+              setSuccess(null);
+            }, 4000);
+          });
+      })
+      .finally(() => setIsUploading(false));
   };
 
   const handleChange = (e) => {
@@ -27,6 +39,8 @@ export default function NewProduct() {
 
   return (
     <section>
+      <h2>Register New Product</h2>
+      {success && <p>✅ {success}</p>}
       {file && <img src={URL.createObjectURL(file)} alt="local file" />}
       <form onSubmit={handleSubmit}>
         <input
@@ -79,7 +93,7 @@ export default function NewProduct() {
           required
           onChange={handleChange}
         />
-        <Button>Register Product</Button>
+        <Button>{isUploading ? 'Uploading...' : 'Register Product'}</Button>
       </form>
     </section>
   );

@@ -11,6 +11,7 @@ export default function NewProduct() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     setIsUploading(true);
 
     uploadImage(file) //

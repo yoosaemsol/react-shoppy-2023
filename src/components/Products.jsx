@@ -10,7 +10,6 @@ export default function Products() {
     data: products,
   } = useQuery(['products'], getProducts);
 
-  console.log('products', products);
   return (
     <>
       {isLoading && <p>Loading...</p>}

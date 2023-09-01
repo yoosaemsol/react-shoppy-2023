@@ -37,6 +37,9 @@ export default function ProductDetail() {
         alt={title}
       />
       <div className="pt-20 w-full pr-10">
+        <p className="bg-brand-green text-white py px-2 w-fit rounded-sm mb-5 opacity-80">
+          {category}
+        </p>
         <h3 className="text-xl">{title}</h3>
         <p className="pb-3">{price.toLocaleString()}</p>
         <hr className="w-full" />

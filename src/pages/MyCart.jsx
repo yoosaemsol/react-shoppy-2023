@@ -27,7 +27,7 @@ export default function MyCart() {
   return (
     <section className="pb-10 flex flex-col">
       <h2 className="p-10 text-2xl font-semibold">My cart</h2>
-      {!hasProducts && <p>Your cart is empty!</p>}
+      {!hasProducts && <p className="m-auto text-lg">Your cart is empty!</p>}
       {hasProducts && (
         <>
           <ul className="border-b-2 border-gray-200 pb-4">

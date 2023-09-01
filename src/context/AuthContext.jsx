@@ -19,7 +19,7 @@ export function AuthcontextProvider({ children }) {
     });
 
     return () => stopListen();
-  }, [adminUser, getAuth]);
+  }, []);
 
   return (
     <AuthContext.Provider

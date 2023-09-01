@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Button from '../components/ui/Button';
+import useCart from '../hooks/useCart';
 
 export default function ProductDetail() {
+  const { addOrUpdateItem } = useCart();
+
   const {
     state: {
       product: { id, image, title, description, category, price, options },
@@ -10,9 +13,18 @@ export default function ProductDetail() {
   } = useLocation();
 
   const [selected, setSelected] = useState(options && options[0]);
+  const [success, setSuccess] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const product = { id, image, title, price, option: selected, quantity: 1 };
+    addOrUpdateItem.mutate(product, {
+      onSuccess: () => {
+        setSuccess(`${title} has been added to your cart 🛍️`);
+        setTimeout(() => setSuccess(null), 3000);
+      },
+    });
   };
 
   const handleSelect = (e) => setSelected(e.target.value);
@@ -25,6 +37,9 @@ export default function ProductDetail() {
         alt={title}
       />
       <div className="pt-20 w-full pr-10">
+        <p className="bg-brand-green text-white py px-2 w-fit rounded-sm mb-5 opacity-80">
+          {category}
+        </p>
         <h3 className="text-xl">{title}</h3>
         <p className="pb-3">{price.toLocaleString()}</p>
         <hr className="w-full" />
@@ -50,6 +65,7 @@ export default function ProductDetail() {
               ))}
             </select>
           </div>
+          {success && <p className="my-2">{success}</p>}
           <Button>Add to cart</Button>
         </form>
       </div>

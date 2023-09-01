@@ -13,12 +13,18 @@ export default function ProductDetail() {
   } = useLocation();
 
   const [selected, setSelected] = useState(options && options[0]);
+  const [success, setSuccess] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const product = { id, image, title, price, option: selected, quantity: 1 };
-    addOrUpdateItem.mutate(product);
+    addOrUpdateItem.mutate(product, {
+      onSuccess: () => {
+        setSuccess(`${title} has been added to your cart 🛍️`);
+        setTimeout(() => setSuccess(null), 3000);
+      },
+    });
   };
 
   const handleSelect = (e) => setSelected(e.target.value);
@@ -56,6 +62,7 @@ export default function ProductDetail() {
               ))}
             </select>
           </div>
+          {success && <p className="my-2">{success}</p>}
           <Button>Add to cart</Button>
         </form>
       </div>

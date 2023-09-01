@@ -51,7 +51,7 @@ export default function CartItem({
             onClick={handleDelete}
           />
         </div>
-        <p className="hidden md:block px-10">
+        <p className="w-40 text-right hidden md:block px-10">
           {(price * quantity).toLocaleString()}
         </p>
       </div>

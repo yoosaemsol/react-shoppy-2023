@@ -4,7 +4,7 @@ import {
   AiFillMinusSquare,
   AiFillDelete,
 } from 'react-icons/ai';
-import { addOrUpdateToCart, removeFromCart } from '../api/firebase';
+import useCart from '../hooks/useCart';
 
 const ICON_CLASS =
   'text-brand-green transition-all cursor-pointer hover:text-brand-active';
@@ -12,17 +12,18 @@ const ICON_CLASS =
 export default function CartItem({
   product,
   product: { image, title, id, option, price, quantity },
-  uid,
 }) {
+  const { addOrUpdateItem, removeItem } = useCart();
+
   const handleMinus = () => {
     if (quantity < 2) return;
 
-    addOrUpdateToCart(uid, { ...product, quantity: quantity - 1 });
+    addOrUpdateItem.mutate({ ...product, quantity: quantity - 1 });
   };
   const handlePlus = () =>
-    addOrUpdateToCart(uid, { ...product, quantity: quantity + 1 });
+    addOrUpdateItem.mutate({ ...product, quantity: quantity + 1 });
 
-  const handleDelete = () => removeFromCart(uid, product.id);
+  const handleDelete = () => removeItem.mutate(id);
 
   return (
     <li className="flex justify-between my-2 items-center px-10">

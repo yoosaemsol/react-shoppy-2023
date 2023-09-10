@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Button from '../components/ui/Button';
+import { useAuthContext } from '../context/AuthContext';
 import useCart from '../hooks/useCart';
 
 export default function ProductDetail() {
   const { addOrUpdateItem } = useCart();
+  const { uid } = useAuthContext();
 
   const {
     state: {
@@ -17,6 +19,11 @@ export default function ProductDetail() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!uid) {
+      window.alert('Please login to add items to your cart 💡');
+      return;
+    }
 
     const product = { id, image, title, price, option: selected, quantity: 1 };
     addOrUpdateItem.mutate(product, {

@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Shoppy: Taste Your Tastes!
+### Shopping Mall App
+Welcome to my Shopping Mall App, a dynamic and feature-rich web application designed with React and powered by Firebase. 
+My app offers a delightful shopping experience with a wide range of user-friendly features. ✨
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br/>
 
-## Available Scripts
+![image](https://github.com/yoosaemsol/react-shoppy-2023/assets/75073867/3b9e7db6-d918-47d4-81b2-74c55acec661)
 
-In the project directory, you can run:
+<br/>
+<br/>
 
-### `yarn start`
+## Features
+### User Authentication
+- **Google OAuth Login** : Sign in with ease using your Google account. Our Firebase-powered authentication ensures a secure and efficient login process.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### User Management
+- **User Branching**: Navigate seamlessly within the app with user-specific paths and experiences.
+- **Authentication Status**: Always stay informed about your login status, ensuring a personalized and secure experience.
+- **Authorization Levels**: Enjoy the app with role-based access. Distinguish between regular users and admin users for tailored features and permissions.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Real-Time Data with Firebase
+- **Firebase Integration**: It harnesses the power of Firebase for Google login and real-time database interaction. The app seamlessly connects to Firebase for a responsive and dynamic experience.
+- **Firebase CRUD Operations**: Leverage Firebase's CREATE (add), READ (list and details), UPDATE (modify), and DELETE (remove) APIs using the useQuery feature for streamlined data management.
 
-### `yarn test`
+### Shopping Cart Magic
+- **Dynamic Cart Management**: Shop confidently with an interactive shopping cart feature.
+- **Badge Updates**: Watch the shopping cart badge update in real-time as you add or remove items from your cart.
+- **Order Total Calculations**: See the total order price adjust dynamically as you change item quantities in your cart.
+- **Cart Item Deletion**: Easily remove items from your cart, simplifying the shopping process.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Admin Features
+- **Product Registration**: Admin users can effortlessly add new products to the catalog, keeping the shopping experience fresh and exciting.
+- **Image Upload**: Utilize Cloudinary for seamless image uploads, enhancing product listings with visuals.
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Responsive UI
+- **Multi-Device Support**: Shop anytime, anywhere. Our responsive design ensures a consistent and enjoyable experience on desktops, tablets, and mobile devices.
